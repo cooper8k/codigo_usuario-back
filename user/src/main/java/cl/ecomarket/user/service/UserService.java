@@ -1,0 +1,41 @@
+package cl.ecomarket.user.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import cl.ecomarket.user.model.User;
+import cl.ecomarket.user.repository.UserRepository;
+import jakarta.transaction.Transactional;
+
+@Service
+@Transactional
+public class UserService {
+
+    @Autowired
+    private UserRepository userRepository;
+
+    // Este método busca por el nombre del usuario y devuelve una lista de usuarios
+    public List<User> findAll(){
+        return userRepository.findAll();
+    }
+
+    // buscar por id
+    public User findById(Integer id){
+        return userRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Usuario no encontrado con ID: " + id));
+    }
+
+    // agregar usuario
+    public User save(User user){
+        return userRepository.save(user);
+    }
+
+    // eliminar usuario
+    public void deleteById(Integer id){
+        userRepository.deleteById(id);
+    }
+    
+}
+
