@@ -30,7 +30,7 @@ public class User {
     @ManyToOne
     @JoinColumn(name = "id_rol", referencedColumnName = "id_rol")
     private Rol rol;
-
+   
     
 
 }

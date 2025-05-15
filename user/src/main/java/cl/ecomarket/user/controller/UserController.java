@@ -18,7 +18,7 @@ import cl.ecomarket.user.model.User;
 import cl.ecomarket.user.service.UserService;
 
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/api/v1/user")
 public class UserController {
 
     @Autowired
