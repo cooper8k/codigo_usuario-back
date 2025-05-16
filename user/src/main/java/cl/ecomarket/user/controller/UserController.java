@@ -81,5 +81,16 @@ public class UserController {
         }
     }
 
+    // eliminar usuario por estado
+    @DeleteMapping("{id}/eliminar/estado")
+    public ResponseEntity<?> eliminarPorEstado(@PathVariable Integer id) {
+        try {
+            userService.deleteByIdFalse(id);
+            return ResponseEntity.noContent().build();
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
+
    
 }

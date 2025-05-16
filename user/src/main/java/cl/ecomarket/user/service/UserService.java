@@ -37,5 +37,18 @@ public class UserService {
         userRepository.deleteById(id);
     }
     
+    // eliminar usuario por estado
+    // Este método elimina un usuario por su ID, pero solo si su estado es false
+    public void deleteByIdFalse(Integer id) {
+    User user = userRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Usuario no encontrado con ID: " + id));
+    if (!user.isEstado()) {
+        userRepository.deleteById(id);
+    } else {
+        throw new RuntimeException("No se puede eliminar el usuario porque está habilitado");
+    }
+}
+
+
 }
 
