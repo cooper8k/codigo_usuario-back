@@ -49,6 +49,7 @@ public class UserController {
             usuario.setId(id);
             usuario.setName(user.getName());
             usuario.setEmail(user.getEmail());
+            usuario.setEstado(user.isEstado());
 
             userService.save(usuario);
             return ResponseEntity.ok(usuario);
