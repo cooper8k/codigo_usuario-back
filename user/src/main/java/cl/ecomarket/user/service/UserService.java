@@ -49,6 +49,13 @@ public class UserService {
     }
 }
 
+    // login 
+    public boolean login (String email, String password ) {
+        User usuario = userRepository.findByEmail(email);
+        return usuario != null && usuario.getPassword().equals(password);
+    }
+
+
 
 }
 
