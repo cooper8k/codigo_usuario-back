@@ -46,8 +46,9 @@ public class UserService {
         userRepository.deleteById(id);
     } else {
         throw new RuntimeException("No se puede eliminar el usuario porque está habilitado");
+        }
+
     }
-}
 
     // login 
     public boolean login (String email, String password ) {
@@ -55,7 +56,9 @@ public class UserService {
         return usuario != null && usuario.getPassword().equals(password);
     }
 
-
-
+    @Transactional
+    public List<User> findByEstadoFalse() {
+        return userRepository.findByEstadoFalse();
+    }
 }
 

@@ -107,7 +107,17 @@ public class UserController {
         
     }
 
-
+    // obtener usuarios inactivos
+    @GetMapping("/inactivos")
+    public ResponseEntity<List<User>> obtenerInactivos() {
+        List<User> inactivos = userService.findByEstadoFalse();
+        if (inactivos.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.ok(inactivos);
+        }
+    }
+    
 
 }
    
